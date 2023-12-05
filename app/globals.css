@@ -1,19 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,4 +20,60 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.bent-img-cont {
+  width: 500px; /* Adjust the width and height as needed */
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  background-color: blue;
+  perspective: 1000px;
+}
+
+.bent-img-cont img {
+  width: 100%;
+  height: auto;
+  /* position: absolute; */
+  transform: rotateX(180deg);
+  transform-origin: top center;
+  z-index: 999;
+  /* transform: skew(20deg, 0deg); Adjust the degree of skewing as desired */
+}
+
+.cont {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  background: linear-gradient(to right, #ff9606, #17163ec5, #17163e);
+
+  /* perspective: 1000px; */
+}
+.cont span {
+  padding: 80px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cont p {
+  padding: 20px;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sec_div {
+  width: 80% auto;
+  /* position: relative; */
+  /* top: 200%; */
+}
+.sec_div .sub {
+  /* position: absolute; */
+  top: 100% !important;
+  margin-top: 200px;
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
 }
