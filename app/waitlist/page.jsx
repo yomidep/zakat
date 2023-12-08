@@ -74,7 +74,7 @@ const page = () => {
               Transparent, Traceable and Shariah Compliant
             </h2>
             <p className="text-white text-sm md:text-lg">
-              "Every contribution tracked, every impact visible and every funds
+              Every contribution tracked, every impact visible and every funds
               distributed according to Shariah. Donate now with confidence.
             </p>
           </div>
