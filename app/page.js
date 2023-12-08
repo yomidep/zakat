@@ -26,9 +26,12 @@ export default function Home() {
       <div className="relative z-0 gradient-bg-welcome">
         <div className="gradient-bg-welcome bg-cover bg-no-repeat bg-center">
           <DynamicNavbar />
-          <DynamicHeroSection />
-          <DynamicDropdown />
-          <DynamicShowcase />
+          <h1 className="text-3xl justify-center items-center">
+            STILL UNDER CONSTRUCTION
+          </h1>
+          {/* <DynamicHeroSection /> */}
+          {/* <DynamicDropdown /> */}
+          {/* <DynamicShowcase /> */}
         </div>
       </div>
     </>
