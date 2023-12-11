@@ -5,6 +5,7 @@ import { navLinks } from "../app/constants";
 import { styles } from "@/app/styles";
 import { logo, menu, close } from "../public/assets";
 import Image from "next/image";
+import zakatlogo from "@/public/images/zakat12.svg";
 
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
@@ -39,13 +40,17 @@ const Navbar = () => {
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
           href="/"
-          className="flex items-center gap-2"
+          className="flex items-center gap-0"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
-          <Image src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          <Image
+            src={zakatlogo}
+            alt="logo"
+            className="w-16 h-8 object-contain"
+          />
           <p className="text-gray-700 text-[18px] font-semibold cursor-pointer flex ">
             Zakat
             <span className="font-light "> Chain</span>
