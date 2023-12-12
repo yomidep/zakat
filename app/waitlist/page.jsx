@@ -15,7 +15,11 @@ const page = () => {
       <div className="mt-32 md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 ">
         <div className="gap-3 justify-start">
           <h2 className="text-[#ff9606] text-2xl sm:text-3xl font-bold ">
-            Building a faster and <span> most secure Blockchain platform </span>{" "}
+            Building a faster and{" "}
+            <span className="text-[#17163e]">
+              {" "}
+              most secure Blockchain platform{" "}
+            </span>{" "}
             for your Zakat and Sadaqah payments.
           </h2>
           <p className="mt-6 text-gray-800 justify-start ">
