@@ -7,6 +7,11 @@ import medium from "@/public/images/medium.jpg";
 import padlock from "@/public/images/gold-bitcoin-padlock.jpg";
 import group from "@/public/images/group-african-kids.jpg";
 import students from "@/public/images/students.png";
+import dynamic from "next/dynamic";
+
+const DynamicFooter = dynamic(() => import("@/components/Footer"), {
+  ssr: false,
+});
 
 const page = () => {
   return (
@@ -41,7 +46,7 @@ const page = () => {
             <h2 className="text-xl font-semibold mb-3">
               The Future of Zakat and Sadaqah Payments
             </h2>
-            <p className="text-white text-sm ">
+            <p className="text-white text-sm mb-3">
               Simplify your zakat payments and experience the seamless
               integration of web3 technology.
             </p>
@@ -60,7 +65,7 @@ const page = () => {
             <h2 className="text-xl font-semibold mb-3">
               Transparent, Traceable and Shariah Compliant
             </h2>
-            <p className="text-white text-sm ">
+            <p className="text-white text-sm mb-3">
               Every contribution tracked, every impact visible and every funds
               distributed according to Shariah.
             </p>
@@ -78,7 +83,7 @@ const page = () => {
             <h2 className="text-xl font-semibold mb-3">
               Greater Future for the Ummah
             </h2>
-            <p className="text-gray-200 text-sm ">
+            <p className="text-gray-200 text-sm mb-3">
               Together, Let’s create a positive change and a better future for
               the ummah. Make a Difference today
             </p>
@@ -109,6 +114,7 @@ const page = () => {
           </button>
         </div>
       </div>
+      <DynamicFooter />
     </div>
   );
 };

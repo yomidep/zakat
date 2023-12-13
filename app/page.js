@@ -1,11 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-// import Image from "next/image";
-// import Navbar from "@/components/Navbar";
-// import HeroSection from "@/components/HeroSection";
-// import Dropdown from "@/components/Dropdown";
-// import Showcase from "@/components/Showcase";
 
 const DynamicNavbar = dynamic(() => import("@/components/Navbar"), {
   ssr: false,
@@ -17,6 +12,9 @@ const DynamicDropdown = dynamic(() => import("@/components/Dropdown"), {
   ssr: false,
 });
 const DynamicShowcase = dynamic(() => import("@/components/Showcase"), {
+  ssr: false,
+});
+const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
 });
 
@@ -33,6 +31,7 @@ export default function Home() {
           {/* <DynamicDropdown /> */}
           {/* <DynamicShowcase /> */}
         </div>
+        <DynamicFooter />
       </div>
     </>
   );
