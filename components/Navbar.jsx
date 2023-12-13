@@ -57,7 +57,7 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-5 justify-center items-center">
+        <ul className="list-none hidden sm:flex flex-row gap-5 justify-center items-center bg-white">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
@@ -91,55 +91,6 @@ const Navbar = () => {
                     </svg>
                   </button>
                 </div>
-
-                <div
-                  class="absolute hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="menu-button"
-                  tabindex="-1"
-                >
-                  <div class="py-1" role="none">
-                    <a
-                      href="#"
-                      class="text-gray-700 block px-4 py-2 text-sm"
-                      role="menuitem"
-                      tabindex="-1"
-                      id="menu-item-0"
-                    >
-                      Account settings
-                    </a>
-                    <a
-                      href="#"
-                      class="text-gray-700 block px-4 py-2 text-sm"
-                      role="menuitem"
-                      tabindex="-1"
-                      id="menu-item-1"
-                    >
-                      Support
-                    </a>
-                    <a
-                      href="#"
-                      class="text-gray-700 block px-4 py-2 text-sm"
-                      role="menuitem"
-                      tabindex="-1"
-                      id="menu-item-2"
-                    >
-                      License
-                    </a>
-                    <form method="POST" action="#" role="none">
-                      <button
-                        type="submit"
-                        class="text-gray-700 block w-full px-4 py-2 text-left text-sm"
-                        role="menuitem"
-                        tabindex="-1"
-                        id="menu-item-3"
-                      >
-                        Sign out
-                      </button>
-                    </form>
-                  </div>
-                </div>
               </div>
             </li>
           ))}
@@ -166,7 +117,7 @@ const Navbar = () => {
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } p-6 white-glassmorphism absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            } p-6 bg-white absolute top-12 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
               {navLinks.map((nav) => (
