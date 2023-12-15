@@ -102,7 +102,7 @@ const page = () => {
         <h2 className="font-bold text-[#17163e] p-3 m-3 sm:text-3xl text-2xl">
           Be among the first to experience the future of Zakat
         </h2>
-        <p className="text-sm font-normal w-[60%] text-[#17163e]">
+        <p className="text-sm font-normal w-auto text-[#17163e] justify-start items-start">
           Join our waitlist today and be notified as soon as we launch!
         </p>
         <div className="mt-4">

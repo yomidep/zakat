@@ -5,9 +5,6 @@ import dynamic from "next/dynamic";
 const DynamicNavbar = dynamic(() => import("@/components/Navbar"), {
   ssr: false,
 });
-const DynamicHeroSection = dynamic(() => import("@/components/HeroSection"), {
-  ssr: false,
-});
 const DynamicDropdown = dynamic(() => import("@/components/Dropdown"), {
   ssr: false,
 });
@@ -27,7 +24,7 @@ export default function Home() {
           <h1 className="text-3xl justify-center items-center">
             STILL UNDER CONSTRUCTION
           </h1>
-          {/* <DynamicHeroSection /> */}
+
           {/* <DynamicDropdown /> */}
           {/* <DynamicShowcase /> */}
         </div>

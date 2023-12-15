@@ -6,7 +6,7 @@ import x from "@/public/images/X.png";
 
 const Footer = () => {
   return (
-    <footer className="border footer z-10 border-t-[#33353F] bg-[#17163e] mt-12">
+    <footer className="border footer z-10 border-t-[#33353F] bg-[#17163e] mt-12 bottom-0">
       <div className=" py-3 flex flex-col justify-center items-center w-full m-auto">
         <span className="bg-white my-8 w-full p-0 border justify-center">
           {/* <Image src={logo} className="cursor-pointer w-28" alt="footer-logo" /> */}
