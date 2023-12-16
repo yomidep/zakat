@@ -5,7 +5,7 @@ import { navLinks } from "../app/constants";
 import { styles } from "@/app/styles";
 import { logo, menu, close } from "../public/assets";
 import Image from "next/image";
-import zakatlogo from "@/public/images/zakat12.svg";
+import zakatlogo from "@/public/images/zakatnew.png";
 
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
