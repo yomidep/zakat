@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import islam from "@/public/images/islam_crypto.jpg";
@@ -8,12 +10,44 @@ import padlock from "@/public/images/gold-bitcoin-padlock.jpg";
 import group from "@/public/images/group-african-kids.jpg";
 import students from "@/public/images/students.png";
 import dynamic from "next/dynamic";
+import supabase from "@/config/supabaseClient";
+import { set } from "mongoose";
 
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
 });
 
-const page = () => {
+const Page = () => {
+
+  const [email, setEmail] = useState("");
+  co
+  const [formError, setFormError] = useState(null);
+
+
+  const Joinwaitlist = async () => {
+
+    if (!email) {
+      setFormError("please enter your email correctly!");
+      return;
+    }
+
+    const {data, error} = await supabase
+    .from('emails')
+    .update({email: email})
+    .eq('id', id)
+    .select() 
+    
+    if (error) {
+      setFormError("Enter the correct email !");
+    }
+
+    if (data) {
+      setFormError(null);
+      setEmail(email);
+    }
+  };
+
+
   return (
     <div>
       <Navbar />
@@ -109,9 +143,17 @@ const page = () => {
           <button className="bg-[#17163e] rounded-2xl text-white p-2 m-4 w-auto">
             Join Discord Channel
           </button>
-          <button className=" rounded-2xl text-[#17163e] p-2 m-4 border-2 border-[#17163e]">
-            Enter Email Address{" "}
-          </button>
+          <div>
+            <form onSubmit={Joinwaitlist}>
+                <label htmlFor="email">E-mail</label>
+                <input type="string"
+                id="email" 
+                value={email}/>
+              <button className=" rounded-2xl text-[#17163e] p-2 m-4 border-2 border-[#17163e]">
+                Submit{" "}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
       <DynamicFooter />
@@ -119,4 +161,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
