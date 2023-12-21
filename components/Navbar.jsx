@@ -94,11 +94,11 @@ const Navbar = () => {
               </div>
             </li>
           ))}
-          <li>
+          {/* <li>
             <button className="bg-[#915EFF] text-white px-2 py-2 rounded-lg font-bold text-[13px] m-0">
               Connect Wallet
             </button>
-          </li>
+          </li> */}
         </ul>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">

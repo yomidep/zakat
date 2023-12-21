@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import islam from "@/public/images/islam_crypto.jpg";
-import pexels from "@/public/images/pexels-movoyagee.jpg";
+import pexels from "@/public/images/newportrait.png";
 import medium from "@/public/images/medium.jpg";
 import padlock from "@/public/images/gold-bitcoin-padlock.jpg";
 import group from "@/public/images/group-african-kids.jpg";
@@ -55,7 +55,7 @@ const page = () => {
             <Image
               alt="pic"
               src={pexels}
-              className="w-full h-full rounded-lg"
+              className="w-full h-[250px] md:h-full rounded-lg items-center justify-center"
             />
           </div>
         </div>
@@ -99,14 +99,14 @@ const page = () => {
       </section>
 
       <div className="flex justify-center items-center flex-col">
-        <h2 className="font-bold text-[#17163e] p-3 m-3 sm:text-3xl text-2xl">
+        <h2 className="font-bold text-[#17163e] p-3 m-3 sm:text-3xl text-2xl text-center">
           Be among the first to experience the future of Zakat
         </h2>
-        <p className="text-sm font-normal w-auto text-[#17163e] justify-start items-start">
+        <p className="text-sm font-normal w-auto text-[#17163e] justify-start items-start text-center">
           Join our waitlist today and be notified as soon as we launch!
         </p>
-        <div className="mt-4">
-          <button className="bg-[#17163e] rounded-2xl text-white p-2 m-4">
+        <div className="mt-4 flex flex-col sm:flex-row w-full justify-center">
+          <button className="bg-[#17163e] rounded-2xl text-white p-2 m-4 w-auto">
             Join Discord Channel
           </button>
           <button className=" rounded-2xl text-[#17163e] p-2 m-4 border-2 border-[#17163e]">
