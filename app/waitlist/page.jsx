@@ -12,6 +12,7 @@ import students from "@/public/images/students.png";
 import dynamic from "next/dynamic";
 import supabase from "@/config/supabaseClient.js";
 
+
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
 });
@@ -19,34 +20,36 @@ const DynamicFooter = dynamic(() => import("@/components/Footer"), {
 const Page = () => {
 
   const [email, setEmail] = useState("");
-  
-  const [formError, setFormError] = useState(null);
 
+  const [formError, setFormError] = useState(null);
 
   const Joinwaitlist = async (e) => {
     e.preventDefault();
-
+  
     if (!email) {
-      setFormError("please enter your email correctly!");
+      setFormError("Please enter your email correctly!");
       return;
     }
-
-    const {data, error} = await supabase
+  
+    const { data, error } = await supabase
       .from('emails')
-      .update({ email: 'email' })
-      .select();
-    
+      .upsert([
+        { email }
+      ], { onConflict: ['email'] });
+  
     if (error) {
-      setFormError("Enter the correct email !");
+      setFormError("Error updating email!");
+      console.error(error);
     }
-
+  
     if (data) {
-      console.log(data)
+      console.log(data);
       setFormError(null);
-      setEmail(email);
+      setEmail(""); // Clear the email input after successful submission
+      setSuccessMessage("Email submitted successfully!"); 
     }
   };
-
+  
 
   return (
     <div>
