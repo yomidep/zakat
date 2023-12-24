@@ -6,16 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "patch-package"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.1",
     "autoprefixer": "10.4.16",
+    "dotenv": "^16.3.1",
     "eslint": "8.54.0",
     "eslint-config-next": "14.0.3",
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
-    "mongoose": "^8.0.3",
     "next": "13.5.4",
+    "patch-package": "^8.0.0",
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-collapse": "^5.1.1",

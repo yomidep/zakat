@@ -10,8 +10,7 @@ import padlock from "@/public/images/gold-bitcoin-padlock.jpg";
 import group from "@/public/images/group-african-kids.jpg";
 import students from "@/public/images/students.png";
 import dynamic from "next/dynamic";
-import supabase from "@/config/supabaseClient";
-import { set } from "mongoose";
+import supabase from "@/config/supabaseClient.js";
 
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
@@ -20,7 +19,7 @@ const DynamicFooter = dynamic(() => import("@/components/Footer"), {
 const Page = () => {
 
   const [email, setEmail] = useState("");
-  co
+  
   const [formError, setFormError] = useState(null);
 
 
@@ -32,10 +31,9 @@ const Page = () => {
     }
 
     const {data, error} = await supabase
-    .from('emails')
-    .update({email: email})
-    .eq('id', id)
-    .select() 
+      .from('emails')
+      .upsert([{ id: '1', email: email }])
+      .select();
     
     if (error) {
       setFormError("Enter the correct email !");
@@ -148,7 +146,8 @@ const Page = () => {
                 <label htmlFor="email">E-mail</label>
                 <input type="string"
                 id="email" 
-                value={email}/>
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}/>
               <button className=" rounded-2xl text-[#17163e] p-2 m-4 border-2 border-[#17163e]">
                 Submit{" "}
               </button>
