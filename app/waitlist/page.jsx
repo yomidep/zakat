@@ -23,7 +23,8 @@ const Page = () => {
   const [formError, setFormError] = useState(null);
 
 
-  const Joinwaitlist = async () => {
+  const Joinwaitlist = async (e) => {
+    e.preventDefault();
 
     if (!email) {
       setFormError("please enter your email correctly!");
@@ -32,7 +33,7 @@ const Page = () => {
 
     const {data, error} = await supabase
       .from('emails')
-      .upsert([{ id: '1', email: email }])
+      .update({ email: 'email' })
       .select();
     
     if (error) {
@@ -40,6 +41,7 @@ const Page = () => {
     }
 
     if (data) {
+      console.log(data)
       setFormError(null);
       setEmail(email);
     }
@@ -147,7 +149,8 @@ const Page = () => {
                 <input type="string"
                 id="email" 
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}/>
+                onChange={(e) => setEmail(e.target.value)}
+                />
               <button className=" rounded-2xl text-[#17163e] p-2 m-4 border-2 border-[#17163e]">
                 Submit{" "}
               </button>
