@@ -33,7 +33,7 @@ const Navbar = () => {
     <nav
       className={`${
         styles.paddingX
-      } bg-white w-full flex items-center py-5 fixed top-0 z-20 ${
+      } bg-white w-full flex items-center py-5 fixed top-0 z-20  ${
         scrolled ? "bg-primary" : "bg-transparent"
       }`}
     >
@@ -49,7 +49,7 @@ const Navbar = () => {
           <Image
             src={zakatlogo}
             alt="logo"
-            className="w-16 h-8 object-contain"
+            className="w-12 h-8 object-contain"
           />
           <p className="text-gray-700 text-[18px] font-semibold cursor-pointer flex ">
             Zakat

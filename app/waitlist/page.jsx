@@ -12,49 +12,44 @@ import students from "@/public/images/students.png";
 import dynamic from "next/dynamic";
 import supabase from "@/config/supabaseClient.js";
 
-
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
 });
 
 const Page = () => {
-
   const [email, setEmail] = useState("");
 
   const [formError, setFormError] = useState(null);
 
   const Joinwaitlist = async (e) => {
     e.preventDefault();
-  
+
     if (!email) {
       setFormError("Please enter your email correctly!");
       return;
     }
-  
+
     const { data, error } = await supabase
-      .from('emails')
-      .upsert([
-        { email }
-      ], { onConflict: ['email'] });
-  
+      .from("emails")
+      .upsert([{ email }], { onConflict: ["email"] });
+
     if (error) {
       setFormError("Error updating email!");
       console.error(error);
     }
-  
+
     if (data) {
       console.log(data);
       setFormError(null);
       setEmail(""); // Clear the email input after successful submission
-      setSuccessMessage("Email submitted successfully!"); 
+      setSuccessMessage("Email submitted successfully!");
     }
   };
-  
 
   return (
     <div>
       <Navbar />
-      <div className="mt-32 md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 ">
+      <div className="mt-16 md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 ">
         <div className="gap-3 justify-start">
           <h2 className="text-[#ff9606] text-2xl sm:text-3xl font-bold ">
             Building a faster and{" "}
@@ -148,12 +143,13 @@ const Page = () => {
           </button>
           <div>
             <form onSubmit={Joinwaitlist}>
-                <label htmlFor="email">E-mail</label>
-                <input type="string"
-                id="email" 
+              <label htmlFor="email">E-mail</label>
+              <input
+                type="string"
+                id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                />
+              />
               <button className=" rounded-2xl text-[#17163e] p-2 m-4 border-2 border-[#17163e]">
                 Submit{" "}
               </button>
