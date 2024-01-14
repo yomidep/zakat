@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import islam from "@/public/images/islam_crypto.jpg";
-import pexels from "@/public/images/newportrait.png";
+import islam from "@/public/images/share.jpg";
+import pexels from "@/public/images/btc-city-large.webp";
 import medium from "@/public/images/medium.jpg";
 import padlock from "@/public/images/gold-bitcoin-padlock.jpg";
 import group from "@/public/images/group-african-kids.jpg";
-import students from "@/public/images/students.png";
+import students from "@/public/images/bus_people.jpg";
 import dynamic from "next/dynamic";
 import supabase from "@/config/supabaseClient.js";
 
@@ -68,7 +68,7 @@ const Page = () => {
             Join our waitlist
           </button>
         </div>
-        <div className="head-pic border-blue-900 rounded-lg border-4">
+        <div className="head-pic border-blue-900 rounded-lg border-4 sm:h-[350px] sm:w-[320px] h-full w-[350px] ">
           <Image alt="pic" src={islam} className="w-full h-full rounded-lg" />
         </div>
       </div>
@@ -83,11 +83,11 @@ const Page = () => {
               integration of web3 technology.
             </p>
           </div>
-          <div className="m-0">
+          <div className="m-auto sm:h-[300px] sm:w-[280px] h-[250px] w-full overflow-hidden items-center justify-center ">
             <Image
               alt="pic"
               src={pexels}
-              className="w-full h-[250px] md:h-full rounded-lg items-center justify-center"
+              className="w-full h-full object-cover rounded-lg items-center justify-center"
             />
           </div>
         </div>
@@ -102,7 +102,8 @@ const Page = () => {
               distributed according to Shariah.
             </p>
           </div>
-          <div>
+
+          <div className="m-auto sm:h-[300px] sm:w-[280px] h-[250px] w-full overflow-hidden items-center justify-center ">
             <Image
               alt="pic"
               src={padlock}
@@ -120,7 +121,7 @@ const Page = () => {
               the ummah. Make a Difference today
             </p>
           </div>
-          <div>
+          <div className="m-auto sm:h-[300px] sm:w-[280px] h-[250px] w-full overflow-hidden items-center justify-center ">
             <Image
               alt="pic"
               src={students}
@@ -138,23 +139,27 @@ const Page = () => {
           Join our waitlist today and be notified as soon as we launch!
         </p>
         <div className="mt-4 flex flex-col sm:flex-row w-full justify-center">
-          <button className="bg-[#17163e] rounded-2xl text-white p-2 m-4 w-auto">
-            Join Discord Channel
-          </button>
-          <div>
-            <form onSubmit={Joinwaitlist}>
-              <label htmlFor="email">E-mail</label>
+          <div className="bg-gray-500 p-1 m-4 rounded-xl flex justify-between h-[55px]">
+            <form
+              onSubmit={Joinwaitlist}
+              className="flex justify-between w-full"
+            >
               <input
                 type="string"
                 id="email"
                 value={email}
+                placeholder="Enter your email address..."
                 onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-transparent outline-none text-white"
               />
-              <button className=" rounded-2xl text-[#17163e] p-2 m-4 border-2 border-[#17163e]">
+              <button className=" rounded-xl bg-[#17163e] text-white p-2 m-1 border-2 border-[#17163e]">
                 Submit{" "}
               </button>
             </form>
           </div>
+          <button className="bg-[#17163e] rounded-2xl text-white p-2 m-4 w-auto">
+            Join Discord Channel
+          </button>
         </div>
       </div>
       <DynamicFooter />
