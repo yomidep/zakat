@@ -12,6 +12,7 @@ import students from "@/public/images/bus_people.jpg";
 import dynamic from "next/dynamic";
 import supabase from "@/config/supabaseClient.js";
 import Modal from "@/components/Modal";
+import { RiQuestionnaireFill } from "react-icons/ri";
 
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
@@ -19,10 +20,19 @@ const DynamicFooter = dynamic(() => import("@/components/Footer"), {
 
 const Page = () => {
   const [email, setEmail] = useState("");
-
   const [formError, setFormError] = useState(null);
-
   const [showModal, setShowModal] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSubmit = () => {
+    if (inputValue.trim() === "") {
+      // Don't submit if the input is empty
+      return;
+    }
+
+    setSubmitted(true);
+  };
 
   const Joinwaitlist = async (e) => {
     e.preventDefault();
@@ -53,10 +63,33 @@ const Page = () => {
     setShowModal(!showModal);
   };
 
+  const handleCloseModal = () => {
+    // Reset the state when the modal is closed
+    setSubmitted(false);
+    setInputValue("");
+    setShowModal(false);
+  };
+
   return (
     <div>
       <Fragment>
         <Navbar />
+
+        <div className="justify-center items-center">
+          <div
+            className="bg-[#17163e] rounded-lg fixed bottom-32 right-4 text-white flex flex-row p-3"
+            onClick={() => setShowModal(true)}
+          >
+            {" "}
+            <p className="p-2 items text-[#ff9606] text-sm">
+              Got questions or opinions? <br />
+              Click here{" "}
+            </p>
+            <div className=" justify-center items-center flex rounded-lg">
+              <RiQuestionnaireFill className="text-5xl text-[#ff9606]" />
+            </div>
+          </div>
+        </div>
         <div className="mt-16 md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 ">
           <div className="gap-3 justify-start">
             <h2 className="text-[#ff9606] text-2xl sm:text-3xl font-bold ">
@@ -72,10 +105,7 @@ const Page = () => {
               Zakat payments at the click of a button. Join our waitlist now to
               be on of the first to know when we launch!
             </p>
-            <button
-              className="rounded-2xl text-white bg-[#ff9606] hover:bg-[#be7f26] p-2 my-5 font-semibold"
-              onClick={() => setShowModal(true)}
-            >
+            <button className="rounded-2xl text-white bg-[#ff9606] hover:bg-[#be7f26] p-2 my-5 font-semibold">
               Join our waitlist
             </button>
           </div>
@@ -174,7 +204,73 @@ const Page = () => {
           </div>
         </div>
         <DynamicFooter />
-        <Modal isVisible={showModal} onClose={() => setShowModal(false)} />
+        {/* <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+          <div>
+            <textarea
+              // value={value}
+              // onChange={onChange}
+              rows={4} // Set the number of visible rows
+              placeholder="Enter your text here..."
+              className="border p-2 w-full"
+            />
+            <div>
+              <div className="flex justify-end">
+                <button className=" rounded-xl bg-[#17163e] hover:bg-[#211f59] text-white p-2 m-1 border-2 border-[#17163e] flex justify-end">
+                  Submit{" "}
+                </button>
+              </div>
+            </div>
+          </div>
+        </Modal> */}
+
+        <Modal isVisible={showModal} onClose={handleCloseModal}>
+          <div className="rounded-2xl">
+            {submitted ? (
+              <div className="m-5 ">
+                <div className="flex justify-center items-center flex-col text-center">
+                  <p className="">
+                    Thank you for joining ZakatChain! You are now a part of
+                    ZakatChain community!{" "}
+                  </p>
+                  <p>
+                    Earn divine rewards from Allah by spreading the word of
+                    Zakat Chain.
+                  </p>
+                  <div className="w-[100%] items-center ">
+                    <button className="text-white bg-[#ff9606] rounded-lg m-3 p-3 w-[80%]">
+                      Share
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className=" flex flex-col">
+                <textarea
+                  rows={4}
+                  placeholder="Enter your text here..."
+                  className="border p-2 w-auto m-3 items-center "
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  required
+                />
+
+                <div className="flex justify-end items-end">
+                  <button
+                    onClick={handleSubmit}
+                    disabled={inputValue.trim() === ""}
+                    className={`rounded-xl ${
+                      inputValue.trim() === ""
+                        ? "bg-gray-300 cursor-not-allowed"
+                        : "bg-[#17163e] hover:bg-[#211f59] text-white"
+                    } p-2 m-1 border-2 border-[#17163e] flex justify-end`}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </Modal>
       </Fragment>
     </div>
   );
