@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 import supabase from "@/config/supabaseClient.js";
 import Modal from "@/components/Modal";
 import { RiQuestionnaireFill } from "react-icons/ri";
+import { toast } from "react-toastify";
 
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
@@ -20,7 +21,7 @@ const DynamicFooter = dynamic(() => import("@/components/Footer"), {
 
 const Page = () => {
   const [email, setEmail] = useState("");
-  const [formError, setFormError] = useState(null);
+  const [opinion, setOpinion] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -38,26 +39,53 @@ const Page = () => {
     e.preventDefault();
 
     if (!email) {
-      setFormError("Please enter your email correctly!");
-      return;
+      return toast.error("Please enter your email correctly!")
     }
 
     const { data, error } = await supabase
       .from("emails")
-      .upsert([{ email }], { onConflict: ["email"] });
+      .upsert([{ email }], { onConflict: ["email"]});
+
+      console.log(data);
 
     if (error) {
-      setFormError("Error updating email!");
+      return toast.error("Error updating email!");
       console.error(error);
     }
 
     if (data) {
       console.log(data);
-      setFormError(null);
       setEmail(""); // Clear the email input after successful submission
-      setSuccessMessage("Email submitted successfully!");
+      toast.success("Email Submitted")
     }
   };
+
+  const submitOpinion = async (e) => {
+  e.preventDefault();
+
+  if (!opinion.trim()) {
+    console.log("Opinion is blank");
+    return toast.error("Opinion is blank");
+  }
+
+  const { data, error } = await supabase
+    .from('Opinions')
+    .upsert([{ Opinion: opinion }], { onConflict: ["Opinion"] });
+
+  console.log("Data:", data);
+  console.log("Error:", error);
+
+  if (error) {
+    console.log("Error Sending data");
+    return toast.error("Error Sending data");
+  }
+
+  if (data) {
+    console.log("Submission successful:", data);
+    setOpinion("");
+    toast.success("Thank you for your opinion");
+  }
+};   
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -225,39 +253,22 @@ const Page = () => {
 
         <Modal isVisible={showModal} onClose={handleCloseModal}>
           <div className="rounded-2xl">
-            {submitted ? (
-              <div className="m-5 ">
-                <div className="flex justify-center items-center flex-col text-center">
-                  <p className="">
-                    Thank you for joining ZakatChain! You are now a part of
-                    ZakatChain community!{" "}
-                  </p>
-                  <p>
-                    Earn divine rewards from Allah by spreading the word of
-                    Zakat Chain.
-                  </p>
-                  <div className="w-[100%] items-center ">
-                    <button className="text-white bg-[#ff9606] rounded-lg m-3 p-3 w-[80%]">
-                      Share
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ) : (
               <div className=" flex flex-col">
-                <textarea
+                <form
+                onSubmit={submitOpinion}>
+                  <input
+                  id="opinion"
                   rows={4}
                   placeholder="Enter your text here..."
                   className="border p-2 w-auto m-3 items-center "
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
+                  value={opinion}
+                  onChange={(e) => setOpinion(e.target.value)}
                   required
                 />
 
                 <div className="flex justify-end items-end">
                   <button
                     onClick={handleSubmit}
-                    disabled={inputValue.trim() === ""}
                     className={`rounded-xl ${
                       inputValue.trim() === ""
                         ? "bg-gray-300 cursor-not-allowed"
@@ -267,8 +278,8 @@ const Page = () => {
                     Submit
                   </button>
                 </div>
+                </form>
               </div>
-            )}
           </div>
         </Modal>
       </Fragment>
