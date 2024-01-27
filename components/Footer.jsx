@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import ig from "@/public/images/ig-img.png";
-import x from "@/public/images/X.png";
+import x from "@/public/images/simple-icons_x.png";
 // import logo from "@/public/assets/skalez_logo.png";
 
 const Footer = () => {
