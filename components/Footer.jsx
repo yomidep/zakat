@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import ig from "@/public/images/ig-img.png";
 import x from "@/public/images/simple-icons_x.png";
@@ -13,8 +14,22 @@ const Footer = () => {
         </span>
         <p className="text-white">All rights reserved.</p>
         <div className="flex gap-3 mt-5">
-          <Image src={ig} className="w-8 h-8" alt="ig" />
-          <Image src={x} className="w-8 h-8 rounded-md" alt="ig" />
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.instagram.com/zakatchain?igsh=a3pkcTBnbzN3Zjdm"
+            className="inline-flex justify-center gap-x-0 rounded-md\ px-3 py-2 text-sm font-light "
+          >
+            <Image src={ig} className="w-8 h-8" alt="ig" />
+          </Link>
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://x.com/ZakatChain?s=09"
+            className="inline-flex justify-center gap-x-0 rounded-md  px-3 py-2 text-sm font-light"
+          >
+            <Image src={x} className="w-8 h-8 rounded-md" alt="ig" />
+          </Link>
         </div>
       </div>
     </footer>
