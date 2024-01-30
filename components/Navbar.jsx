@@ -87,12 +87,6 @@ const Navbar = () => {
           </ul>
 
           <div className="sm:hidden flex flex-1 justify-end items-center">
-            {/* <img
-            src={toggle ? close : menu}
-            alt="menu"
-            className="w-[28px] h-[28px] object-contain"
-            onClick={() => setToggle(!toggle)}
-          /> */}
             {toggle ? (
               <AiOutlineClose size={20} onClick={() => setToggle(!toggle)} />
             ) : (
@@ -116,7 +110,20 @@ const Navbar = () => {
                       setActive(nav.title);
                     }}
                   >
-                    <a href={`#${nav.id}`}>{nav.title}</a>
+                    {nav.href ? (
+                      <Link
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={nav.href}
+                        className="inline-flex justify-center gap-x-0 rounded-md bg-white px-3 py-2 text-sm font-light text-gray-600 shadow-sm hover:bg-gray-50"
+                      >
+                        {nav.title}
+                      </Link>
+                    ) : (
+                      <span className="inline-flex justify-center gap-x-0 rounded-md bg-white px-3 py-2 text-sm font-light text-gray-600 shadow-sm hover:bg-gray-50">
+                        {nav.title}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>
