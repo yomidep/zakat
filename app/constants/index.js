@@ -33,10 +33,12 @@ export const navLinks = [
   {
     id: "x",
     title: "Twitter (X)",
+    href: "https://x.com/ZakatChain?s=09",
   },
   {
     id: "instagram",
     title: "Instagram",
+    href: "https://www.instagram.com/zakatchain?igsh=a3pkcTBnbzN3Zjdm",
   },
 ];
 

@@ -67,27 +67,23 @@ const Navbar = () => {
                 } hover:text-gray-500 text-[13px] font-medium cursor-pointer`}
                 onClick={() => setActive(nav.title)}
               >
-                {/* <a href={`#${nav.id}`}>{nav.title}</a> */}
-                <div class="  text-left">
-                  <div>
-                    <button
-                      type="button"
-                      class="inline-flex justify-center gap-x-0 rounded-md bg-white px-3 py-2 text-sm font-light text-gray-600 shadow-sm hover:bg-gray-50"
-                      id="menu-button"
-                      aria-expanded="true"
-                      aria-haspopup="true"
-                    >
-                      {nav.title}
-                    </button>
-                  </div>
-                </div>
+                {nav.href ? (
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={nav.href}
+                    className="inline-flex justify-center gap-x-0 rounded-md bg-white px-3 py-2 text-sm font-light text-gray-600 shadow-sm hover:bg-gray-50"
+                  >
+                    {nav.title}
+                  </Link>
+                ) : (
+                  <span className="inline-flex justify-center gap-x-0 rounded-md bg-white px-3 py-2 text-sm font-light text-gray-600 shadow-sm hover:bg-gray-50">
+                    {nav.title}
+                  </span>
+                )}
               </li>
             ))}
-            {/* <li>
-            <button className="bg-[#915EFF] text-white px-2 py-2 rounded-lg font-bold text-[13px] m-0">
-              Connect Wallet
-            </button>
-          </li> */}
+            {/* ... (existing code) */}
           </ul>
 
           <div className="sm:hidden flex flex-1 justify-end items-center">

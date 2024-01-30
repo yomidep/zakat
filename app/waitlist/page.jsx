@@ -26,6 +26,25 @@ const Page = () => {
   const [submitted, setSubmitted] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
+  const [scrolledToBottom, setScrolledToBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the user has scrolled to the bottom
+      const isBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+      setScrolledToBottom(isBottom);
+    };
+
+    // Attach the scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const handleSubmit = () => {
     if (inputValue.trim() === "") {
       // Don't submit if the input is empty
@@ -33,6 +52,7 @@ const Page = () => {
     }
 
     setSubmitted(true);
+    setInputValue("");
   };
 
   const Joinwaitlist = async (e) => {
@@ -86,9 +106,11 @@ const Page = () => {
       toast.success("Thank you for your opinion");
     }
   };
-
   const toggleModal = () => {
-    setShowModal(!showModal);
+    // Show the modal only if scrolled to the bottom
+    if (scrolledToBottom) {
+      setShowModal(!showModal);
+    }
   };
 
   const handleCloseModal = () => {
@@ -106,8 +128,10 @@ const Page = () => {
           {/* got questions modal */}
           <div className="justify-center items-center">
             <div
-              className="bg-[#17163e] rounded-lg fixed bottom-32 right-4 text-white flex flex-row p-3"
-              onClick={() => setShowModal(true)}
+              className={`bg-[#17163e] rounded-lg fixed bottom-32 right-4 text-white flex flex-row p-3 ${
+                scrolledToBottom ? "opacity-100" : "opacity-0"
+              } transition-opacity`}
+              onClick={toggleModal}
             >
               {" "}
               <p className="p-2 items text-[#ff9606] text-sm">
@@ -265,7 +289,11 @@ const Page = () => {
           </div>
           </Modal> */}
 
-          <Modal isVisible={showModal} onClose={handleCloseModal}>
+          <Modal
+            isVisible={showModal}
+            onClose={handleCloseModal}
+            animation="fade"
+          >
             <div className="rounded-2xl">
               {submitted ? (
                 <div className="m-5 ">
