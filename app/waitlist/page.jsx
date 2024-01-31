@@ -64,9 +64,9 @@ const Page = () => {
 
     const { data, error } = await supabase
       .from("emails")
-      .upsert([{ email }], { onConflict: ["email"] });
+      .upsert([{ email }], { onConflict: ["email"] })
+      .select();
 
-    console.log(data);
 
     if (error) {
       return toast.error("Error updating email!");
@@ -74,7 +74,6 @@ const Page = () => {
     }
 
     if (data) {
-      console.log(data);
       setEmail(""); // Clear the email input after successful submission
       toast.success("Email Submitted");
     }
@@ -90,18 +89,16 @@ const Page = () => {
 
     const { data, error } = await supabase
       .from("Opinions")
-      .upsert([{ Opinion: opinion }], { onConflict: ["Opinion"] });
+      .upsert([{ Opinion: opinion }], { onConflict: ["Opinion"] })
+      .select();
 
-    console.log("Data:", data);
-    console.log("Error:", error);
+    
 
     if (error) {
-      console.log("Error Sending data");
       return toast.error("Error Sending data");
     }
 
     if (data) {
-      console.log("Submission successful:", data);
       setOpinion("");
       toast.success("Thank you for your opinion");
     }
