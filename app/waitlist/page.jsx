@@ -67,7 +67,6 @@ const Page = () => {
       .upsert([{ email }], { onConflict: ["email"] })
       .select();
 
-
     if (error) {
       return toast.error("Error updating email!");
       console.error(error);
@@ -91,8 +90,6 @@ const Page = () => {
       .from("Opinions")
       .upsert([{ Opinion: opinion }], { onConflict: ["Opinion"] })
       .select();
-
-    
 
     if (error) {
       return toast.error("Error Sending data");
@@ -175,7 +172,7 @@ const Page = () => {
             <div className=" bg-[#17163e] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
               <div>
                 <h2 className="text-2xl sm:text-4xl font-semibold mb-3">
-                  The Future of Zakat and Sadaqah Payments
+                  The Future of Zakat and Sadaqah Payments.
                 </h2>
                 <p className="text-white text-sm mb-3">
                   Simplify your zakat payments and experience the seamless
