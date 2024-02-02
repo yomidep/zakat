@@ -3,6 +3,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import islam from "@/public/images/share.jpg";
 import pexels from "@/public/images/btc-city-large.webp";
 import medium from "@/public/images/medium.jpg";
@@ -153,7 +154,15 @@ const Page = () => {
                 Zakat payments at the click of a button. Join our waitlist now
                 to be on of the first to know when we launch!
               </p>
-              <button className="rounded-2xl text-white bg-[#ff9606] hover:bg-[#be7f26] p-2 my-5 font-semibold">
+              <button
+                className="rounded-2xl text-white bg-[#ff9606] hover:bg-[#be7f26] p-2 my-5 font-semibold"
+                onClick={() => {
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth", // Use smooth scrolling effect
+                  });
+                }}
+              >
                 Join our waitlist
               </button>
             </div>
@@ -171,7 +180,7 @@ const Page = () => {
           <section className="mt-3 py-6 ">
             <div className=" bg-[#17163e] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
               <div>
-                <h2 className="text-2xl sm:text-4xl font-semibold mb-3">
+                <h2 className="text-2xl sm:text-3xl font-semibold mb-3">
                   The Future of Zakat and Sadaqah Payments.
                 </h2>
                 <p className="text-white text-sm mb-3">
@@ -192,7 +201,7 @@ const Page = () => {
 
             <div className=" bg-[#ff9606] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
               <div>
-                <h2 className="text-2xl sm:text-4xl font-semibold mb-3 ">
+                <h2 className="text-2xl sm:text-3xl font-semibold mb-3 ">
                   Transparent, Traceable and Shariah Compliant
                 </h2>
                 <p className="text-white text-sm mb-3">
@@ -212,7 +221,7 @@ const Page = () => {
             </div>
             <div className=" bg-[#17163e] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
               <div>
-                <h2 className="text-2xl sm:text-4xl font-semibold mb-3">
+                <h2 className="text-2xl sm:text-3xl font-semibold mb-3">
                   Greater Future for the Ummah
                 </h2>
                 <p className="text-gray-200 text-sm mb-3">
@@ -308,21 +317,21 @@ const Page = () => {
                   </div>
                 </div>
               ) : (
-                <div className=" flex flex-col">
+                <div className=" flex flex-col ">
                   <form onSubmit={submitOpinion}>
-                    <input
-                      id="opinion"
+                    <textarea
                       rows={4}
                       placeholder="Enter your text here..."
-                      className="border p-2 w-auto m-3 items-center "
-                      value={opinion}
-                      onChange={(e) => setOpinion(e.target.value)}
+                      className="border p-2 w-[90%] m-3 items-center "
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
                       required
                     />
 
                     <div className="flex justify-end items-end">
                       <button
                         onClick={handleSubmit}
+                        disabled={inputValue.trim() === ""}
                         className={`rounded-xl ${
                           inputValue.trim() === ""
                             ? "bg-gray-300 cursor-not-allowed"
