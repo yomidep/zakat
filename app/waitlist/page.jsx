@@ -180,10 +180,7 @@ const Page = () => {
           </div>
           <section className="mt-3 py-6 ">
             <div className=" bg-[#17163e] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
-              <motion.div
-                variants={slideIn("left", "tween", 0.2, 1)}
-                className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
-              >
+              <div>
                 <h2 className="text-2xl sm:text-3xl font-semibold mb-3">
                   The Future of Zakat and Sadaqah Payments.
                 </h2>
@@ -191,13 +188,10 @@ const Page = () => {
                   Simplify your zakat payments and experience the seamless
                   integration of web3 technology.
                 </p>
-              </motion.div>
+              </div>
 
               <div className="w-auto bg-none flex justify-center items-center">
-                <motion.div
-                  variants={slideIn("right", "tween", 0.2, 1)}
-                  className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-                >
+                <div>
                   <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
                     <Image
                       alt="pic"
@@ -205,15 +199,12 @@ const Page = () => {
                       className="w-full h-full object-cover rounded-lg items-center justify-center"
                     />
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
 
             <div className=" bg-[#ff9606] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
-              <motion.div
-                variants={slideIn("left", "tween", 0.2, 1)}
-                className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
-              >
+              <div>
                 <h2 className="text-2xl sm:text-3xl font-semibold mb-3 ">
                   Transparent, Traceable and Shariah Compliant
                 </h2>
@@ -221,12 +212,9 @@ const Page = () => {
                   Every contribution tracked, every impact visible and every
                   funds distributed according to Shariah.
                 </p>
-              </motion.div>
+              </div>
               <div className="w-auto bg-none flex justify-center items-center">
-                <motion.div
-                  variants={slideIn("right", "tween", 0.2, 1)}
-                  className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-                >
+                <div>
                   <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
                     <Image
                       alt="pic"
@@ -234,14 +222,11 @@ const Page = () => {
                       className="w-full h-full rounded-lg"
                     />
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
             <div className=" bg-[#17163e] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
-              <motion.div
-                variants={slideIn("left", "tween", 0.2, 1)}
-                className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
-              >
+              <div>
                 <h2 className="text-2xl sm:text-3xl font-semibold mb-3">
                   Greater Future for the Ummah
                 </h2>
@@ -249,12 +234,9 @@ const Page = () => {
                   Together, Let’s create a positive change and a better future
                   for the ummah. Make a Difference today
                 </p>
-              </motion.div>
+              </div>
               <div className="w-auto bg-none flex justify-center items-center">
-                <motion.div
-                  variants={slideIn("right", "tween", 0.2, 1)}
-                  className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-                >
+                <div>
                   <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
                     <Image
                       alt="pic"
@@ -262,7 +244,7 @@ const Page = () => {
                       className="w-full h-full rounded-lg"
                     />
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </section>
