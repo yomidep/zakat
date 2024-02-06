@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment, useEffect, useState } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -15,7 +16,7 @@ import supabase from "@/config/supabaseClient.js";
 import Modal from "@/components/Modal";
 import { RiQuestionnaireFill } from "react-icons/ri";
 import { toast } from "react-toastify";
-
+import { slideIn } from "../utils/motion";
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
 });
@@ -168,7 +169,7 @@ const Page = () => {
             </div>
 
             <div className="w-auto bg-none flex justify-center items-center">
-              <div className="head-pic border-blue-900 rounded-lg border-4 sm:h-[350px] sm:w-[350px] h-full w-[350px] flex justify-end items-center">
+              <div className="head-pic border-blue-900 rounded-lg border-4 bg-blend-lighten animate-custom-bounce sm:h-[350px] sm:w-[350px] h-full w-[350px] flex justify-end items-center">
                 <Image
                   alt="pic"
                   src={islam}
@@ -179,7 +180,10 @@ const Page = () => {
           </div>
           <section className="mt-3 py-6 ">
             <div className=" bg-[#17163e] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
-              <div>
+              <motion.div
+                variants={slideIn("left", "tween", 0.2, 1)}
+                className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+              >
                 <h2 className="text-2xl sm:text-3xl font-semibold mb-3">
                   The Future of Zakat and Sadaqah Payments.
                 </h2>
@@ -187,20 +191,29 @@ const Page = () => {
                   Simplify your zakat payments and experience the seamless
                   integration of web3 technology.
                 </p>
-              </div>
+              </motion.div>
+
               <div className="w-auto bg-none flex justify-center items-center">
-                <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
-                  <Image
-                    alt="pic"
-                    src={pexels}
-                    className="w-full h-full object-cover rounded-lg items-center justify-center"
-                  />
-                </div>
+                <motion.div
+                  variants={slideIn("right", "tween", 0.2, 1)}
+                  className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+                >
+                  <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
+                    <Image
+                      alt="pic"
+                      src={pexels}
+                      className="w-full h-full object-cover rounded-lg items-center justify-center"
+                    />
+                  </div>
+                </motion.div>
               </div>
             </div>
 
             <div className=" bg-[#ff9606] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
-              <div>
+              <motion.div
+                variants={slideIn("left", "tween", 0.2, 1)}
+                className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+              >
                 <h2 className="text-2xl sm:text-3xl font-semibold mb-3 ">
                   Transparent, Traceable and Shariah Compliant
                 </h2>
@@ -208,19 +221,27 @@ const Page = () => {
                   Every contribution tracked, every impact visible and every
                   funds distributed according to Shariah.
                 </p>
-              </div>
+              </motion.div>
               <div className="w-auto bg-none flex justify-center items-center">
-                <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
-                  <Image
-                    alt="pic"
-                    src={padlock}
-                    className="w-full h-full rounded-lg"
-                  />
-                </div>
+                <motion.div
+                  variants={slideIn("right", "tween", 0.2, 1)}
+                  className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+                >
+                  <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
+                    <Image
+                      alt="pic"
+                      src={padlock}
+                      className="w-full h-full rounded-lg"
+                    />
+                  </div>
+                </motion.div>
               </div>
             </div>
             <div className=" bg-[#17163e] p-6 m-6 justify-between rounded-lg text-white md:grid md:grid-cols-2 gap-4 items-center xl:gap-16 sm:py-8 xl:px-12 ">
-              <div>
+              <motion.div
+                variants={slideIn("left", "tween", 0.2, 1)}
+                className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+              >
                 <h2 className="text-2xl sm:text-3xl font-semibold mb-3">
                   Greater Future for the Ummah
                 </h2>
@@ -228,15 +249,20 @@ const Page = () => {
                   Together, Let’s create a positive change and a better future
                   for the ummah. Make a Difference today
                 </p>
-              </div>
+              </motion.div>
               <div className="w-auto bg-none flex justify-center items-center">
-                <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
-                  <Image
-                    alt="pic"
-                    src={students}
-                    className="w-full h-full rounded-lg"
-                  />
-                </div>
+                <motion.div
+                  variants={slideIn("right", "tween", 0.2, 1)}
+                  className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+                >
+                  <div className="m-auto sm:h-[300px] h-[250px] w-full overflow-hidden items-center justify-center ">
+                    <Image
+                      alt="pic"
+                      src={students}
+                      className="w-full h-full rounded-lg"
+                    />
+                  </div>
+                </motion.div>
               </div>
             </div>
           </section>
@@ -268,7 +294,14 @@ const Page = () => {
                 </form>
               </div>
               <button className="bg-[#17163e] rounded-2xl text-white p-2 m-4 w-auto">
-                Join Discord Channel
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://t.me/+LiVei0bMz9thOTRk"
+                  // className="inline-flex justify-center gap-x-0 rounded-md bg-white px-3 py-2 text-sm font-light text-gray-600 shadow-sm hover:bg-gray-50"
+                >
+                  Join Telegram Channel
+                </Link>
               </button>
             </div>
           </div>
@@ -302,18 +335,13 @@ const Page = () => {
                 <div className="m-5 ">
                   <div className="flex justify-center items-center flex-col text-center">
                     <p className="">
-                      Thank you for joining ZakatChain! You are now a part of
-                      ZakatChain community!{" "}
+                      Thank you for your Opinions! We are glad you have a
+                      feedback for ZakatChain community!{" "}
                     </p>
                     <p>
                       Earn divine rewards from Allah by spreading the word of
                       Zakat Chain.
                     </p>
-                    <div className="w-[100%] items-center ">
-                      <button className="text-white bg-[#ff9606] rounded-lg m-3 p-3 w-[80%]">
-                        Share
-                      </button>
-                    </div>
                   </div>
                 </div>
               ) : (

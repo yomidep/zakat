@@ -87,3 +87,23 @@ nav {
     background-size: 500px;
   }
 }
+
+@keyframes customBounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-custom-bounce {
+  animation: customBounce 4s ease-in-out infinite;
+}
