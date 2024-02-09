@@ -17,6 +17,7 @@ import Modal from "@/components/Modal";
 import { RiQuestionnaireFill } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { slideIn } from "../utils/motion";
+import JoinWaitlistModal from "./components/join-waitlist-modal.component";
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
 });
@@ -25,6 +26,7 @@ const Page = () => {
   const [email, setEmail] = useState("");
   const [opinion, setOpinion] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [showJWModal, setShowJWModal] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -71,12 +73,12 @@ const Page = () => {
 
     if (error) {
       return toast.error("Error updating email!");
-      console.error(error);
     }
 
     if (data) {
       setEmail(""); // Clear the email input after successful submission
       toast.success("Email Submitted");
+      setShowJWModal(true);
     }
   };
 
@@ -114,6 +116,11 @@ const Page = () => {
     setSubmitted(false);
     setInputValue("");
     setShowModal(false);
+  };
+
+  const handleCloseJWModal = () => {
+    // Reset the state when the modal is closed
+    setShowJWModal(false);
   };
 
   return (
@@ -356,6 +363,8 @@ const Page = () => {
               )}
             </div>
           </Modal>
+
+          <JoinWaitlistModal showJWModal={showJWModal} handleJWCloseModal={handleCloseJWModal}/>
         </div>
       </Fragment>
     </div>
