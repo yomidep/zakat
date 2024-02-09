@@ -1,14 +1,37 @@
 import Modal from '@/components/Modal';
 import OrangeBgButton from '@/components/orange-bg-button';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 // JW stands for Join waitlist
 
+const customMessage = "Hey guys, join the Zakat Chain and help to make a difference in the world. Click on the link to join the waitlist.";
+const url = "https://zakatchain.com";
+const text = customMessage + " \n" + url;
+const encodedMessage = encodeURIComponent(text);
+
+const textToShare = {
+    title: 'Zakat Chain',
+    text: customMessage,
+    url: url
+};
+
 const JoinWaitlistModal = ({showJWModal, handleJWCloseModal}) => {
-    const customMessage = "Hey guys, join the Zakat Chain and help to make a difference in the world. Click on the link to join the waitlist.";
-    const url = "https://zakatchain.com";
-    const text = customMessage + " \n" + url;
-    const encodedMessage = encodeURIComponent(text);
+    //STATES
+    const [isWebShareSupported, setIsWebShareSupported] = useState(false);
+
+    useEffect(() => {
+        // Check if Web Share API is supported
+        setIsWebShareSupported(!!navigator.share);
+      }, []);
+    
+      const handleShare = async () => {
+        try {
+          await navigator.share(textToShare);
+          console.log('Successfully shared');
+        } catch (error) {
+          console.error('Error sharing:', error.message);
+        }
+      };
   return (
     <Modal
         isVisible={showJWModal}
@@ -24,11 +47,11 @@ const JoinWaitlistModal = ({showJWModal, handleJWCloseModal}) => {
                     <p>
                         Meanwhile, you can help to share the word about Zakat Chain on WhatsApp.
                     </p>
-                    <div className="flex justify-center items-center mt-4">
+                    <div className="flex justify-center items-center mt-4" onClick={handleShare}>
                         <OrangeBgButton additionalClasses="rounded font-semibold">
-                            <a href={`whatsapp://send?text=${encodedMessage}`} target='_blank'>
+                            {/* <a href={`whatsapp://send?text=${encodedMessage}`} target='_blank'> */}
                                 Share on WhatsApp
-                            </a>
+                            {/* </a> */}
                         </OrangeBgButton>
                     </div>
                 </div>
