@@ -12,7 +12,7 @@ const Footer = () => {
         <span className="bg-white my-8 w-full p-0 border justify-center">
           {/* <Image src={logo} className="cursor-pointer w-28" alt="footer-logo" /> */}
         </span>
-        <p className="text-white">All rights reserved.</p>
+        <p className="text-white">Follow us on our socials.</p>
         <div className="flex gap-3 mt-5">
           <Link
             target="_blank"

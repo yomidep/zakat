@@ -27,7 +27,6 @@ const Page = () => {
   const [opinion, setOpinion] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showJWModal, setShowJWModal] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const [scrolledToBottom, setScrolledToBottom] = useState(false);
@@ -50,13 +49,9 @@ const Page = () => {
   }, []);
 
   const handleSubmit = () => {
-    if (inputValue.trim() === "") {
-      // Don't submit if the input is empty
-      return;
-    }
+    
 
-    setSubmitted(true);
-    setInputValue("");
+    
   };
 
   const Joinwaitlist = async (e) => {
@@ -78,18 +73,15 @@ const Page = () => {
     if (data) {
       setEmail(""); // Clear the email input after successful submission
       toast.success("Email Submitted");
-      setShowJWModal(true);
     }
   };
 
   const submitOpinion = async (e) => {
     e.preventDefault();
-
-    if (!opinion.trim()) {
-      console.log("Opinion is blank");
-      return toast.error("Opinion is blank");
+    if (inputValue.trim() === "") {
+      // Don't submit if the input is empty
+      return;
     }
-
     const { data, error } = await supabase
       .from("Opinions")
       .upsert([{ Opinion: opinion }], { onConflict: ["Opinion"] })
@@ -102,6 +94,9 @@ const Page = () => {
     if (data) {
       setOpinion("");
       toast.success("Thank you for your opinion");
+      setShowModal(false);
+    setInputValue("");
+    setShowJWModal(true);
     }
   };
   const toggleModal = () => {
@@ -295,45 +290,13 @@ const Page = () => {
             </div>
           </div>
           <DynamicFooter />
-          {/* <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
-          <div>
-            <textarea
-              // value={value}
-              // onChange={onChange}
-              rows={4} // Set the number of visible rows
-              placeholder="Enter your text here..."
-              className="border p-2 w-full"
-            />
-            <div>
-              <div className="flex justify-end">
-                <button className=" rounded-xl bg-[#17163e] hover:bg-[#211f59] text-white p-2 m-1 border-2 border-[#17163e] flex justify-end">
-                  Submit{" "}
-                </button>
-              </div>
-            </div>
-          </div>
-          </Modal> */}
 
           <Modal
             isVisible={showModal}
             onClose={handleCloseModal}
             animation="fade"
           >
-            <div className="rounded-2xl">
-              {submitted ? (
-                <div className="m-5 ">
-                  <div className="flex justify-center items-center flex-col text-center">
-                    <p className="">
-                      Thank you for your Opinions! We are glad you have a
-                      feedback for ZakatChain community!{" "}
-                    </p>
-                    <p>
-                      Earn divine rewards from Allah by spreading the word of
-                      Zakat Chain.
-                    </p>
-                  </div>
-                </div>
-              ) : (
+                <div className="rounded-2xl">
                 <div className=" flex flex-col ">
                   <form onSubmit={submitOpinion}>
                     <textarea
@@ -347,7 +310,7 @@ const Page = () => {
 
                     <div className="flex justify-end items-end">
                       <button
-                        onClick={handleSubmit}
+                      type="submit"
                         disabled={inputValue.trim() === ""}
                         className={`rounded-xl ${
                           inputValue.trim() === ""
@@ -360,7 +323,6 @@ const Page = () => {
                     </div>
                   </form>
                 </div>
-              )}
             </div>
           </Modal>
 

@@ -1,13 +1,15 @@
 import Modal from '@/components/Modal';
+import ShareButtonPhoneComponent from '@/components/Share-button-phone.component';
 import OrangeBgButton from '@/components/orange-bg-button';
 import React, { useEffect, useState } from 'react'
 
 // JW stands for Join waitlist
-
-const customMessage = "Hey guys, join the Zakat Chain and help to make a difference in the world. Click on the link to join the waitlist.";
-const url = "https://zakatchain.com";
+// This component is a modal that pops up when a user joins the waitlist
+const customMessage = "Join ZakatChain in using the power of Web3 to impact the lives of the needy, poor and orphaned. ";
+const url = "https://www.zakatchain.com";
 const text = customMessage + " \n" + url;
 const encodedMessage = encodeURIComponent(text);
+// This is the message that will be shared when the user clicks the share button
 
 const textToShare = {
     title: 'Zakat Chain',
@@ -15,21 +17,14 @@ const textToShare = {
     url: url
 };
 
+// The comoponent recieves two props, showJWModal and handleJWCloseModal. showJWModal is a boolean that determines if the modal should be shown or not. handleJWCloseModal is a function that closes the modal
 const JoinWaitlistModal = ({showJWModal, handleJWCloseModal}) => {
-    //STATES
-    const [isWebShareSupported, setIsWebShareSupported] = useState(false);
-
-    useEffect(() => {
-        // Check if Web Share API is supported
-        setIsWebShareSupported(!!navigator.share);
-      }, []);
-    
+    // This function is called when the user clicks the share button. It shares the message.
       const handleShare = async () => {
         try {
           await navigator.share(textToShare);
-          console.log('Successfully shared');
         } catch (error) {
-          console.error('Error sharing:', error.message);
+          alert('Error sharing:', error.message);
         }
       };
   return (
@@ -42,16 +37,18 @@ const JoinWaitlistModal = ({showJWModal, handleJWCloseModal}) => {
             <div className="py-5 px-2">
                 <div className="flex justify-center items-center flex-col text-center">
                     <p className="">
-                        Thank you for joining the waitlist. You will recieve information on how to join the Zakat Chain soon.
+                    Thank you for joining ZakatChain! You are now part of ZakatChain community!
                     </p>
                     <p>
-                        Meanwhile, you can help to share the word about Zakat Chain on WhatsApp.
+                    Earn divine rewards from Allah by spreading the word of Zakat Chain.
                     </p>
-                    <div className="flex justify-center items-center mt-4" onClick={handleShare}>
+                    {/*ShareButtonPhoneComponent will be shown on mobile phones only */}
+                    <ShareButtonPhoneComponent handleShare={handleShare} additionalClasses="flex justify-center items-center mt-4 md:hidden" />
+                    <div className="hidden justify-center items-center mt-4 md:flex" onClick={handleShare}>
                         <OrangeBgButton additionalClasses="rounded font-semibold">
-                            {/* <a href={`whatsapp://send?text=${encodedMessage}`} target='_blank'> */}
+                            <a href={`whatsapp://send?text=${encodedMessage}`} target='_blank'>
                                 Share on WhatsApp
-                            {/* </a> */}
+                            </a>
                         </OrangeBgButton>
                     </div>
                 </div>
