@@ -34,8 +34,9 @@ const Page = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Check if the user has scrolled to the bottom
+      console.log(document.body.offsetHeight, window.scrollY);
       const isBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
       setScrolledToBottom(isBottom);
     };
 
@@ -47,12 +48,6 @@ const Page = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const handleSubmit = () => {
-    
-
-    
-  };
 
   const Joinwaitlist = async (e) => {
     e.preventDefault();
@@ -73,6 +68,7 @@ const Page = () => {
     if (data) {
       setEmail(""); // Clear the email input after successful submission
       toast.success("Email Submitted");
+      setShowJWModal(true);
     }
   };
 
@@ -95,8 +91,8 @@ const Page = () => {
       setOpinion("");
       toast.success("Thank you for your opinion");
       setShowModal(false);
-    setInputValue("");
-    setShowJWModal(true);
+      setInputValue("");
+      setShowJWModal(true);
     }
   };
   const toggleModal = () => {

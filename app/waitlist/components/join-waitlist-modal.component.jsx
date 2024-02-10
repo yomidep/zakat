@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 // JW stands for Join waitlist
 // This component is a modal that pops up when a user joins the waitlist
 const customMessage = "Join ZakatChain in using the power of Web3 to impact the lives of the needy, poor and orphaned. ";
-const url = "https://www.zakatchain.com";
+const url = "https://www.zakatchain.io";
 const text = customMessage + " \n" + url;
 const encodedMessage = encodeURIComponent(text);
 // This is the message that will be shared when the user clicks the share button
