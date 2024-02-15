@@ -17,7 +17,7 @@ import Modal from "@/components/Modal";
 import { RiQuestionnaireFill } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { slideIn } from "../utils/motion";
-import JoinWaitlistModal from "./components/join-waitlist-modal.component";
+import JoinWaitlistModal from "../../components/join-waitlist-modal.component";
 const DynamicFooter = dynamic(() => import("@/components/Footer"), {
   ssr: false,
 });
@@ -72,29 +72,30 @@ const Page = () => {
     }
   };
 
-  const submitOpinion = async (e) => {
-    e.preventDefault();
-    if (inputValue.trim() === "") {
-      // Don't submit if the input is empty
-      return;
-    }
-    const { data, error } = await supabase
-      .from("Opinions")
-      .upsert([{ Opinion: opinion }], { onConflict: ["Opinion"] })
-      .select();
+const submitOpinion = async (e) => {
+  e.preventDefault();
+  if (inputValue.trim() === "") {
+    // Don't submit if the input is empty
+    return;
+  }
+  const { data, error } = await supabase
+    .from("Opinions")
+    .upsert([{ Opinion: inputValue }], { onConflict: ["Opinion"] })
+    .select();
 
-    if (error) {
-      return toast.error("Error Sending data");
-    }
+  if (error) {
+    return toast.error("Error Sending data");
+  }
 
-    if (data) {
-      setOpinion("");
-      toast.success("Thank you for your opinion");
-      setShowModal(false);
-      setInputValue("");
-      setShowJWModal(true);
-    }
-  };
+  if (data) {
+    setOpinion("");
+    toast.success("Thank you for your opinion");
+    setShowModal(false);
+    setInputValue("");
+    setShowJWModal(true);
+  }
+};
+
   const toggleModal = () => {
     // Show the modal only if scrolled to the bottom
     if (scrolledToBottom) {

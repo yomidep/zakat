@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 // JW stands for Join waitlist
 // This component is a modal that pops up when a user joins the waitlist
 const customMessage = "Join ZakatChain in using the power of Web3 to impact the lives of the needy, poor and orphaned. ";
-const url = "https://www.zakatchain.io";
+const url = "https://www.zakatchain.io/waitlist";
 const text = customMessage + " \n" + url;
 const encodedMessage = encodeURIComponent(text);
 // This is the message that will be shared when the user clicks the share button
@@ -47,7 +47,7 @@ const JoinWaitlistModal = ({showJWModal, handleJWCloseModal}) => {
                     <div className="hidden justify-center items-center mt-4 md:flex" onClick={handleShare}>
                         <OrangeBgButton additionalClasses="rounded font-semibold">
                             <a href={`whatsapp://send?text=${encodedMessage}`} target='_blank'>
-                                Share on WhatsApp
+                                Share 
                             </a>
                         </OrangeBgButton>
                     </div>
