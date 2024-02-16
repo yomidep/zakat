@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
-  title: "Zakat Chain App",
+  title: "ZakatChain",
   description: "Make payments the Zakat way",
 };
 

@@ -29,6 +29,7 @@ export const navLinks = [
   {
     id: "waitlist",
     title: "Join waitlist",
+    href: "/waitlist"
   },
   {
     id: "x",

@@ -124,9 +124,14 @@ const Navbar = () => {
                         {nav.title}
                       </Link>
                     ) : (
-                      <span className="inline-flex justify-center gap-x-0 rounded-md bg-white px-3 py-2 text-sm font-light text-gray-600 shadow-sm hover:bg-gray-50">
-                        {nav.title}
-                      </span>
+                        <Link
+                          target="/waitlist"
+                          className="inline-flex justify-center gap-x-0 rounded-md bg-[#ff9606] px-3 py-2 text-sm font-light text-gray-600 shadow-sm hover:bg-gray-50">
+                            <span >
+                              {nav.title}
+                            </span>
+                        </Link>
+                      
                     )}
                   </li>
                 ))}
