@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: "ZakatChain",
-  description: "Make payments the Zakat way",
+  description: " Where blockchain meets compassion  ",
 };
 
 export default function RootLayout({ children }) {
