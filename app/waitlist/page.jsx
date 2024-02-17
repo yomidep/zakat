@@ -150,7 +150,7 @@ const submitOpinion = async (e) => {
                 for your Zakat and Sadaqah payments.
               </h2>
               <p className="mt-6 text-gray-800 justify-start ">
-                Zakat Chain brings to you a fast and secure way of making your
+                ZakatChain brings to you a fast and secure way of making your
                 Zakat payments at the click of a button. Join our waitlist now
                 to be on of the first to know when we launch!
               </p>
