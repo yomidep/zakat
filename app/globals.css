@@ -49,11 +49,21 @@ body {
 .cont span {
   padding: 80px;
   border-radius: 50%;
-  background-color: red;
+  /* background-image: url(../public/images/black_n_white.jpeg); */
+  /* background-image: url(/public/images/); */
+  border: 1px solid black;
+  z-index: 99;
+  background: red;
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  display: inline-block;
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
+  background-size: cover;
+  background-position: center;
 }
 .cont p {
   padding: 20px;
